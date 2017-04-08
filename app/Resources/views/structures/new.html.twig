@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-default" href="{{ path('structures_index') }}">liste</a>
+    <h1>Creation d'une Structure</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" style="margin-top: 10px" type="submit" value="Create" />
+    {{ form_end(form) }}
+
+{% endblock %}

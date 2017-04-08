@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-default" href="{{ path('messages_index') }}">Liste</a>
+    <h1 class="page-header">Créer un message</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" style="margin-top: 10px" type="submit" value="Create" />
+    {{ form_end(form) }}
+
+{% endblock %}

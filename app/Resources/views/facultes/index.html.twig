@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-default" href="{{ path('facultes_new') }}">Creer une faculté</a>
+    <h1 class="page-header">Facultes list</h1>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for faculte in facultes %}
+                <tr>
+                    <td><a href="{{ path('facultes_show', { 'id': faculte.id }) }}">{{ faculte.id }}</a></td>
+                    <td>{{ faculte.nom }}</td>
+                    <td>
+
+                                <a class="btn btn-default" href="{{ path('facultes_show', { 'id': faculte.id }) }}">Détails</a>
+
+                                | <a class="btn btn-success" href="{{ path('facultes_edit', { 'id': faculte.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}

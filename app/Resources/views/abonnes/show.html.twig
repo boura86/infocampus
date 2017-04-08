@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-default" href="{{ path('abonnes_index') }}">Back to the list</a>
+    <h1 class="page-header"> Détails d'un abonné</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ abonne.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ abonne.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ abonne.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ abonne.type }}</td>
+            </tr>
+            <tr>
+                <th>Numtel</th>
+                <td>{{ abonne.numTel }}</td>
+            </tr>
+            <tr>
+                <th>Domaineinteret</th>
+                <td>{{ abonne.domaineInteret }}</td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ abonne.niveau }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ abonne.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+            <a class="btn btn-success col-md-1" href="{{ path('abonnes_edit', { 'id': abonne.id }) }}">Edit</a>
+
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger col-lg-offset-2 col-md-1" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+
+{% endblock %}

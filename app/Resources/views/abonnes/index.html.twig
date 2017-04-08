@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-default" href="{{ path('abonnes_new') }}">Créer un abonné</a>
+    <h1 class="page-header">Liste des abonnés</h1>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Type</th>
+                <th>Numtel</th>
+                <th>Domaineinteret</th>
+                <th>Niveau</th>
+                <th>Password</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for abonne in abonnes %}
+                <tr>
+                    <td><a href="{{ path('abonnes_show', { 'id': abonne.id }) }}">{{ abonne.id }}</a></td>
+                    <td>{{ abonne.nom }}</td>
+                    <td>{{ abonne.prenom }}</td>
+                    <td>{{ abonne.type }}</td>
+                    <td>{{ abonne.numTel }}</td>
+                    <td>{{ abonne.domaineInteret }}</td>
+                    <td>{{ abonne.niveau }}</td>
+                    <td>{{ abonne.password }}</td>
+                    <td>
+
+                        <a class="btn btn-default" href="{{ path('abonnes_show', { 'id': abonne.id }) }}">détails</a>
+
+                        | <a class="btn btn-success" href="{{ path('abonnes_edit', { 'id': abonne.id }) }}">edit</a>
+
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

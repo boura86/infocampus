@@ -1,0 +1,4 @@
+services:
+#    info_campus.example:
+#        class: InfoCampusBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

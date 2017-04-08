@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-default" href="{{ path('abonnes_index') }}">liste</a>
+    <h1>Création d'un abonné</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit"  value="Create" class="btn btn-primary" style="margin-top: 10px" />
+    {{ form_end(form) }}
+
+{% endblock %}

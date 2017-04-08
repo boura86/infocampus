@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-default" href="{{ path('messages_index') }}">Liste</a>
+    <h1 class="page-header">Détails d'un message</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ message.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ message.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Objet</th>
+                <td>{{ message.objet }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if message.date %}{{ message.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datereception</th>
+                <td>{% if message.dateReception %}{{ message.dateReception|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Dateenvoi</th>
+                <td>{% if message.dateEnvoi %}{{ message.dateEnvoi|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ message.statut }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+            <a class="btn btn-success col-md-1" href="{{ path('messages_edit', { 'id': message.id }) }}">Edit</a>
+
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger col-lg-offset-2 col-md-1" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace InfoCampusBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -16,33 +17,34 @@ class AbonnesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom', TextType::class, array('attr' => array('class' => 'form-control')))
-            ->add('prenom', TextType::class, array('attr' => array('class' => 'form-control')))
+        $builder->add('nom', TextType::class, array('required' => false, 'attr' => array('class' => 'form-control')))
+            ->add('prenom', TextType::class, array('required' => false, 'attr' => array('class' => 'form-control', 'required' => false)))
             ->add('type', ChoiceType::class, array(
                 'choices'  => array(
                     'Général' => 'G',
-                    'Etudiant' => 'E',
-                    'Pro' => 'P',
+                    'Infocampus' => 'IC',
+                    'InfocampusPlus' => 'IP',
                 ),
                 'attr' => array('class' => 'form-control'),
                 ))
             ->add('numTel', TextType::class, array('attr' => array('class' => 'form-control')))
-            ->add('domaineInteret', TextType::class, array('attr' => array('class' => 'form-control')))
-            ->add('niveau', ChoiceType::class, array(
-                'choices'  => array(
-                    'Licence1' => 'L1',
-                    'Licence2' => 'L2',
-                    'Licence3' => 'L3',
-                    'Master1' => 'M1',
-                    'Master2' => 'M2',
-                    'Doctorant' => 'D',
-                    'Personnel' => 'P'
-                ),
-                'attr' => array('class' => 'form-control'),
+            ->add('domaineInteret', TextType::class, array('required' => false, 'attr' => array('class' => 'form-control')))
+            ->add('niveau', EntityType::class, array(
+                'class' => 'InfoCampusBundle\Entity\Niveau',
+                'query_builder' => function (EntityRepository $niv) {
+                    return $niv->createQueryBuilder('u')
+                        ->orderBy('u.nom', 'ASC');
+                },
+                'choice_label' => 'nom',
+                'attr' => array('class' => 'form-control')
             ))
 //            ->add('password', TextType::class, array('attr' => array('class' => 'form-control')))
             ->add('faculte', EntityType::class, array(
                 'class' => 'InfoCampusBundle\Entity\Facultes',
+                'query_builder' => function (EntityRepository $fac) {
+                    return $fac->createQueryBuilder('u')
+                        ->orderBy('u.nom', 'ASC');
+                },
                 'choice_label' => 'nom',
                 'attr' => array('class' => 'form-control')
             ));

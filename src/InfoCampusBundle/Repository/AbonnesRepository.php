@@ -10,4 +10,15 @@ namespace InfoCampusBundle\Repository;
  */
 class AbonnesRepository extends \Doctrine\ORM\EntityRepository
 {
+
+//    public function getAbonnesBy($niveau, $faculte)
+//    {
+//
+//        $query = $this->createQueryBuilder('a')
+//            ->where('a.niveau='.$niveau)
+//            ->andWhere('a.faculte ='.$faculte)
+//            ->getQuery();
+//        $abonnes = $query->getResult();
+//        return $abonnes;
+//    }
 }

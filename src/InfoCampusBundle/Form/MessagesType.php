@@ -18,7 +18,7 @@ class MessagesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('libelle', TextareaType::class, array('attr' => array('class' => 'form-control')))
-            ->add('objet', TextType::class, array('attr' => array('class' => 'form-control')))
+            ->add('objet', TextType::class, array('attr' => array('class' => 'form-control')));
 //            ->add('date',  DateTimeType::class, array(
 //                'widget' => 'single_text',
 //                'html5' => false,
@@ -39,13 +39,13 @@ class MessagesType extends AbstractType
 //            ))
 //            ->add('statut', TextType::class, array('attr' => array('class' => 'form-control')))
 //            ->add('abonnes')
-            ->add('facultes', EntityType::class, array(
-        // query choices from this entity
-                        'class' => 'InfoCampusBundle\Entity\Facultes',
-                        'choice_label' => 'nom',
-                        'multiple' => true,
-                        'attr' => array('class' => 'form-control')
-                    ));
+//            ->add('facultes', EntityType::class, array(
+//        // query choices from this entity
+//                        'class' => 'InfoCampusBundle\Entity\Facultes',
+//                        'choice_label' => 'nom',
+//                        'multiple' => true,
+//                        'attr' => array('class' => 'form-control')
+//                    ));
     }
     
     /**

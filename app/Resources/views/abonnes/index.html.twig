@@ -15,6 +15,7 @@
                 <th>Numtel</th>
                 <th>Domaineinteret</th>
                 <th>Niveau</th>
+                <th>Faculte</th>
                 <th>Password</th>
                 <th>Actions</th>
             </tr>
@@ -28,7 +29,8 @@
                     <td>{{ abonne.type }}</td>
                     <td>{{ abonne.numTel }}</td>
                     <td>{{ abonne.domaineInteret }}</td>
-                    <td>{{ abonne.niveau }}</td>
+                    <td>{{ abonne.niveau.nom }}</td>
+                    <td>{{ abonne.faculte.nom }}</td>
                     <td>{{ abonne.password }}</td>
                     <td>
 

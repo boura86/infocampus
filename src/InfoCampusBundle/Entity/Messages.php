@@ -77,6 +77,14 @@ class Messages
     private  $facultes;
 
     /**
+     * @var Niveau
+     *
+     * @ORM\ManyToOne(targetEntity="InfoCampusBundle\Entity\Niveau")
+     * @ORM\JoinColumn(name="niveau_id", referencedColumnName="id")
+     */
+    private $niveau;
+
+    /**
      * Get id
      *
      * @return int
@@ -317,5 +325,29 @@ class Messages
     public function removeFaculte(\InfoCampusBundle\Entity\Facultes $faculte)
     {
         $this->facultes->removeElement($faculte);
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \InfoCampusBundle\Entity\Niveau $niveau
+     *
+     * @return Messages
+     */
+    public function setNiveau(\InfoCampusBundle\Entity\Niveau $niveau = null)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \InfoCampusBundle\Entity\Niveau
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
     }
 }

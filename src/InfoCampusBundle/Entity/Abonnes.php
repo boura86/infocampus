@@ -24,14 +24,14 @@ class Abonnes
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", nullable=true, length=255)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", nullable=true, length=255)
      */
     private $prenom;
     /**
@@ -51,14 +51,15 @@ class Abonnes
     /**
      * @var string
      *
-     * @ORM\Column(name="domaineInteret", type="string", length=255)
+     * @ORM\Column(name="domaineInteret", type="string", nullable=true, length=255)
      */
     private $domaineInteret;
 
     /**
-     * @var string
+     * @var Niveau
      *
-     * @ORM\Column(name="niveau", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="InfoCampusBundle\Entity\Niveau")
+     * @ORM\JoinColumn(name="niveau_id", referencedColumnName="id")
      */
     private $niveau;
 
@@ -72,7 +73,7 @@ class Abonnes
     /**
      * @var Facultes
      *
-     * @ORM\ManyToOne(targetEntity="Facultes")
+     * @ORM\ManyToOne(targetEntity="InfoCampusBundle\Entity\Facultes")
      * @ORM\JoinColumn(name="faculte_id", referencedColumnName="id")
      */
     private $faculte;
@@ -183,29 +184,7 @@ class Abonnes
         return $this->domaineInteret;
     }
 
-    /**
-     * Set niveau
-     *
-     * @param string $niveau
-     *
-     * @return Abonnes
-     */
-    public function setNiveau($niveau)
-    {
-        $this->niveau = $niveau;
 
-        return $this;
-    }
-
-    /**
-     * Get niveau
-     *
-     * @return string
-     */
-    public function getNiveau()
-    {
-        return $this->niveau;
-    }
 
     /**
      * Set password
@@ -277,5 +256,29 @@ class Abonnes
     public function getFaculte()
     {
         return $this->faculte;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param \InfoCampusBundle\Entity\Niveau $niveau
+     *
+     * @return Abonnes
+     */
+    public function setNiveau(\InfoCampusBundle\Entity\Niveau $niveau = null)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return \InfoCampusBundle\Entity\Niveau
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
     }
 }

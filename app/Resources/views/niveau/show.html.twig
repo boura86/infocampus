@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-default" href="{{ path('niveau_index') }}">Liste</a>
+    <h1 class="page-header">Detail de {{ niveau.nom }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ niveau.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ niveau.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+            <a class="btn btn-success col-md-1" href="{{ path('niveau_edit', { 'id': niveau.id }) }}">Edit</a>
+
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger col-lg-offset-2 col-md-1" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+
+{% endblock %}

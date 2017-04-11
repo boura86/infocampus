@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <a class="btn btn-default" href="{{ path('niveau_index') }}">Back to the list</a>
+    <hr>
+    <h1 class="page-header">Creer un niveau</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" style="margin-top: 10px" type="submit" value="Creer" />
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -56,21 +56,23 @@ class Abonnes
     private $domaineInteret;
 
     /**
-     * @var string
+     * @var Niveau
      *
-     * @ORM\Column(name="niveau", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="InfoCampusBundle\Entity\Niveau")
+     * @ORM\JoinColumn(name="niveau_id", referencedColumnName="id")
      */
     private $niveau;
 
     /**
      * @var string
-     *
+     * @Doctrine\ORM\Mapping\Column(type="string", nullable=false)
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
 
     /**
      * @var Facultes
+     *
      * @ORM\ManyToOne(targetEntity="Facultes")
      * @ORM\JoinColumn(name="faculte_id", referencedColumnName="id")
      */
@@ -182,29 +184,7 @@ class Abonnes
         return $this->domaineInteret;
     }
 
-    /**
-     * Set niveau
-     *
-     * @param string $niveau
-     *
-     * @return Abonnes
-     */
-    public function setNiveau($niveau)
-    {
-        $this->niveau = $niveau;
 
-        return $this;
-    }
-
-    /**
-     * Get niveau
-     *
-     * @return string
-     */
-    public function getNiveau()
-    {
-        return $this->niveau;
-    }
 
     /**
      * Set password
@@ -229,5 +209,52 @@ class Abonnes
     {
         return $this->password;
     }
-}
 
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Abonnes
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set faculte
+     *
+     * @param \InfoCampusBundle\Entity\Facultes $faculte
+     *
+     * @return Abonnes
+     */
+    public function setFaculte(\InfoCampusBundle\Entity\Facultes $faculte = null)
+    {
+        $this->faculte = $faculte;
+
+        return $this;
+    }
+
+    /**
+     * Get faculte
+     *
+     * @return \InfoCampusBundle\Entity\Facultes
+     */
+    public function getFaculte()
+    {
+        return $this->faculte;
+    }
+}

@@ -32,11 +32,11 @@
             </tr>
             <tr>
                 <th>Niveau</th>
-                <td>{{ abonne.niveau.nom }}</td>
+                <td>{% if abonne.niveau %}{{ abonne.niveau.nom }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Faculte</th>
-                <td>{{ abonne.faculte.nom }}</td>
+                <td>{% if abonne.faculte %}{{ abonne.faculte.nom }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Password</th>

@@ -105,7 +105,7 @@ class MessagesController extends Controller
             foreach ($abonnes as $abonne)
             {
 
-                if (($abonne->getNiveau()->getNom() == $message->getNiveau()->getNom()))
+                if (($abonne->getNiveau() == $message->getNiveau()))
                 {
                     array_push($abonnesElu,$abonne);
                 }
@@ -113,7 +113,7 @@ class MessagesController extends Controller
 
 
             foreach ($abonnesElu as $elu) {
-                $this->sendSms($abonne->getNumTel(),$message->getLibelle());
+                $this->sendSms($elu->getNumTel(),$message->getLibelle());
             }
             return $this->redirectToRoute('messages_show', array('id' => $message->getId()));
         }

@@ -29,8 +29,8 @@
                     <td>{{ abonne.type }}</td>
                     <td>{{ abonne.numTel }}</td>
                     <td>{{ abonne.domaineInteret }}</td>
-                    <td>{{ abonne.niveau.nom }}</td>
-                    <td>{{ abonne.faculte.nom }}</td>
+                    <td>{% if abonne.niveau %}{{ abonne.niveau.nom }} {% endif %}</td>
+                    <td>{% if abonne.faculte  %}{{ abonne.faculte.nom }}{% endif %}</td>
                     <td>{{ abonne.password }}</td>
                     <td>
 

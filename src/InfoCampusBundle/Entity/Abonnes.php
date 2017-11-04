@@ -58,8 +58,8 @@ class Abonnes
     /**
      * @var Niveau
      *
-     * @ORM\ManyToOne(targetEntity="InfoCampusBundle\Entity\Niveau")
-     * @ORM\JoinColumn(name="niveau_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="InfoCampusBundle\Entity\Niveau", cascade={"remove"})
+     * @ORM\JoinColumn(name="niveau_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $niveau;
 

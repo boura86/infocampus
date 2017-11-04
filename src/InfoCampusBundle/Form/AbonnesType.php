@@ -36,6 +36,9 @@ class AbonnesType extends AbstractType
                         ->orderBy('u.nom', 'ASC');
                 },
                 'choice_label' => 'nom',
+                'required' => false,
+                'empty_data' =>null,
+                'preferred_choices' => array(),
                 'attr' => array('class' => 'form-control')
             ))
 //            ->add('password', TextType::class, array('attr' => array('class' => 'form-control')))
@@ -46,6 +49,9 @@ class AbonnesType extends AbstractType
                         ->orderBy('u.nom', 'ASC');
                 },
                 'choice_label' => 'nom',
+                'required' => false,
+                'empty_data' =>null,
+                'preferred_choices' => array(),
                 'attr' => array('class' => 'form-control')
             ));
     }

@@ -102,19 +102,18 @@ class MessagesController extends Controller
             $abonnesElu = array();
             $abonnes = $em->getRepository("InfoCampusBundle:Abonnes")->findAll();
 
-            foreach ($abonnes as $abonne)
-            {
+            $abonnesElu = $this->getAbonneElus($abonnes, $message);
 
-                if (($abonne->getNiveau() == $message->getNiveau()))
-                {
-                    array_push($abonnesElu,$abonne);
+            if (count($abonnesElu) > 0) {
+                foreach ($abonnesElu as $elu) {
+                    $this->sendSms($elu->getNumTel(),$message->getLibelle());
                 }
             }
-
-
-            foreach ($abonnesElu as $elu) {
-                $this->sendSms($elu->getNumTel(),$message->getLibelle());
+            else{
+                return $this->redirectToRoute('empty_list');
             }
+
+
             return $this->redirectToRoute('messages_show', array('id' => $message->getId()));
         }
 
@@ -124,6 +123,37 @@ class MessagesController extends Controller
         ));
     }
 
+    /**
+     * @return Response
+     * @Route("/emptylist", name="empty_list")
+     */
+    public function emptyList() {
+        return $this->render('messages/empty.html.twig');
+    }
+
+    /**
+     * Renvoie les abonnes appartenant aux facultes choisies
+     * @param array $abonnes
+     * @param Messages $message
+     * @return array
+     */
+    private function getAbonneElus(array $abonnes, Messages $message) {
+        $abonnesElu = array();
+        foreach ($abonnes as $abonne)
+        {
+
+            if (($abonne->getNiveau() == $message->getNiveau()))
+            {
+                foreach ($message->getFacultes() as $faculte) {
+                    if ($abonne->getFaculte() == $faculte) {
+                        array_push($abonnesElu,$abonne);
+                    }
+                }
+            }
+        }
+        return $abonnesElu;
+
+    }
     public function sendSms($numero, $text) {
 
         $login = "kannel";
